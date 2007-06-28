@@ -1,18 +1,11 @@
+%define name foomatic-filters
 %define version 3.0.2
-%define releasedate 20060827
+%define releasedate 20070627
 %define release %mkrel 1.%{releasedate}.1
-
-##### RPM PROBLEM WORKAROUNDS
-
-# Suppress automatically generated Requires for Perl libraries.
-#define _requires_exceptions perl\(.*\)
-  
-#define _unpackaged_files_terminate_build       0 
-#define _missing_doc_files_terminate_build      0
 
 ##### GENERAL DEFINITIONS
 
-Name:		foomatic-filters
+Name:		%{name}
 Version:	%{version}
 Release:	%{release}
 Summary:        Foomatic filters needed to run print queues with Foomatic PPDs
@@ -29,8 +22,8 @@ BuildArchitectures: noarch
 
 ##### BUILDREQUIRES
 
-BuildRequires:	autoconf2.5
-BuildRequires:	perl-devel, file, libxml2-devel, mpage
+BuildRequires:	autoconf
+BuildRequires:	perl-devel file libxml2-devel mpage
 %ifarch x86_64
 BuildRequires:	cups >= 1.2.0-0.5361.0mdk
 %else
@@ -40,7 +33,7 @@ BuildRequires:	cups >= 1.2.0
 ##### SOURCES
 
 # Foomatic packages
-Source:	http://www.linuxprinting.org/download/foomatic/%{name}-%{version}-%{releasedate}.tar.bz2
+Source:	http://www.linuxprinting.org/download/foomatic/%{name}-3.0-%{releasedate}.tar.bz2
 
 ##### BUILD ROOT
 
@@ -48,7 +41,7 @@ BuildRoot:	%_tmppath/%name-%version-%release-root
 
 ##### PACKAGE DESCRIPTION
 
-%description -n foomatic-filters
+%description
 Foomatic is a comprehensive, spooler-independent database of printers,
 printer drivers, and driver descriptions. It contains utilities to
 generate PPD (Postscript Printer Description) files and printer queues
@@ -69,13 +62,10 @@ Foomatic PPD files.
 
 
 %prep
-# remove old directory
-rm -rf $RPM_BUILD_DIR/%{name}-%{version}-*
-
 ##### FOOMATIC
 
 # Source trees for installation
-%setup -q -n %{name}-%{version}-%{releasedate}
+%setup -q -n %{name}-3.0-%{releasedate}
 %if 0
 # Modifications to make package building on 64-bit-systems
 perl -p -i -e 's:\blib\b:\$LIB:g' configure.ac
@@ -121,7 +111,6 @@ esac!' configure.ac
 # work.
 make
 
-
 %install
 
 rm -rf %{buildroot}
@@ -142,22 +131,7 @@ rm -f %buildroot/etc/foomatic/filter.conf.sample
 # Link to make Foomatic 2.0.x CUPS queues working with Foomatic 3.0.x
 ln -s ../../../bin/foomatic-rip %buildroot%{_prefix}/lib/cups/filter/cupsomatic
 
-# Install documentation
-install -d %buildroot%{_docdir}/foomatic-filters-%{version}
-cp README USAGE TODO ChangeLog \
-	%buildroot%{_docdir}/foomatic-filters-%{version}
-
-
-
 ##### GENERAL STUFF
-
-# Correct permissions for all documentation files
-chmod -R a+rX %{buildroot}%{_docdir}
-chmod -R a-x %{buildroot}%{_docdir}/*/*
-chmod -R go-w %{buildroot}%{_docdir}
-chmod -R u+w %{buildroot}%{_docdir}
-
-
 
 %post
 # Restart the CUPS daemon when it is running, but do not start it when it
@@ -171,14 +145,16 @@ chmod -R u+w %{buildroot}%{_docdir}
 # backend index
 /sbin/service cups condrestart > /dev/null 2>/dev/null || :
 
+##### CLEAN UP
 
+%clean
+rm -rf %{buildroot}
 
 ##### FILES
 
 %files
 %defattr(-,root,root)
-%docdir %{_docdir}/%{name}-%{version}
-%{_docdir}/%{name}-%{version}
+%doc README USAGE TODO ChangeLog
 %_bindir/*
 %_prefix/lib/cups/filter/*
 %_prefix/lib/cups/backend/*
@@ -189,9 +165,3 @@ chmod -R u+w %{buildroot}%{_docdir}
 %dir %config(noreplace) %{_sysconfdir}/foomatic/direct
 %config(noreplace) %{_sysconfdir}/foomatic/filter.conf
 
-
-
-##### CLEAN UP
-
-%clean
-rm -rf %{buildroot}
