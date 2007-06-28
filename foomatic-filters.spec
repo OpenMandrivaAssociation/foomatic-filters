@@ -33,7 +33,7 @@ BuildRequires:	cups >= 1.2.0
 ##### SOURCES
 
 # Foomatic packages
-Source:	http://www.linuxprinting.org/download/foomatic/%{name}-3.0-%{releasedate}.tar.bz2
+Source:	http://www.linuxprinting.org/download/foomatic/%{name}-3.0-%{releasedate}.tar.gz
 
 ##### BUILD ROOT
 
