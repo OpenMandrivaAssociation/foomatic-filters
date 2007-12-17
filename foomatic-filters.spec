@@ -37,7 +37,6 @@ Source:	http://www.linuxprinting.org/download/foomatic/%{name}-3.0-%{releasedate
 
 ##### BUILD ROOT
 
-BuildRoot:	%_tmppath/%name-%version-%release-root
 
 ##### PACKAGE DESCRIPTION
 
