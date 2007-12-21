@@ -53,8 +53,6 @@ There are spooler-independent command line interfaces to manipulate
 queues (foomatic-configure) and to print files/manipulate jobs
 (foomatic printjob).
  
-The site http://www.linuxprinting.org/ is based on this database.
-
 This package contains the filters needed to run print queues based on
 Foomatic PPD files.
 
