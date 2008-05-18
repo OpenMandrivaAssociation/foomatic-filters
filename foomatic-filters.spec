@@ -1,6 +1,6 @@
 %define name foomatic-filters
 %define version 3.0.2
-%define releasedate 20071218
+%define releasedate 20080518
 %define release %mkrel 1.%{releasedate}.1
 
 ##### GENERAL DEFINITIONS
@@ -9,7 +9,7 @@ Name:		%{name}
 Version:	%{version}
 Release:	%{release}
 Summary:        Foomatic filters needed to run print queues with Foomatic PPDs
-License:        GPL
+License:        GPLv2
 Group:          System/Servers
 Url:            http://www.linuxprinting.org/
 Requires:       mpage
