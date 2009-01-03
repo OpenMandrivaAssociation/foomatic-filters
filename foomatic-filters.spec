@@ -1,7 +1,7 @@
 %define name foomatic-filters
 %define version 3.0.2
-%define releasedate 20080810
-%define release %mkrel 2.%{releasedate}.2
+%define releasedate 20090103
+%define release %mkrel 2.%{releasedate}.1
 
 ##### GENERAL DEFINITIONS
 
