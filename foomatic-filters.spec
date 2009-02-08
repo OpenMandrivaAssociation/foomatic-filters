@@ -1,7 +1,7 @@
 %define name foomatic-filters
-%define version 3.0.2
-%define releasedate 20090103
-%define release %mkrel 2.%{releasedate}.1
+%define version 4.0
+%define releasedate 20090208
+%define release %mkrel 0.%{releasedate}.1
 
 ##### GENERAL DEFINITIONS
 
@@ -18,12 +18,12 @@ Conflicts:	cups < 1.2.0-0.5361.0mdk
 %endif
 Obsoletes:	foomatic
 Provides:	foomatic
-BuildArchitectures: noarch
 
 ##### BUILDREQUIRES
 
 BuildRequires:	autoconf
 BuildRequires:	perl-devel file libxml2-devel mpage
+BuildRequires:	libgs-devel
 %ifarch x86_64
 BuildRequires:	cups >= 1.2.0-0.5361.0mdk
 %else
@@ -33,7 +33,7 @@ BuildRequires:	cups >= 1.2.0
 ##### SOURCES
 
 # Foomatic packages
-Source:	http://www.linuxprinting.org/download/foomatic/%{name}-3.0-%{releasedate}.tar.gz
+Source:	http://www.linuxprinting.org/download/foomatic/%{name}-%{version}-%{releasedate}.tar.gz
 
 ##### BUILD ROOT
 
@@ -63,7 +63,7 @@ Foomatic PPD files.
 ##### FOOMATIC
 
 # Source trees for installation
-%setup -q -n %{name}-3.0-%{releasedate}
+%setup -q -n %{name}-%{version}-%{releasedate}
 %if 0
 # Modifications to make package building on 64-bit-systems
 perl -p -i -e 's:\blib\b:\$LIB:g' configure.ac
