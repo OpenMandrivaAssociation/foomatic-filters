@@ -1,7 +1,13 @@
 %define name foomatic-filters
-%define version 4.0
-%define releasedate 20090408
+%define version 4.0.1
+%define releasedate 0
+%if %{releasedate}
 %define release %mkrel 0.%{releasedate}.1
+%define tarname %{name}-%{version}-%{releasedate}
+%else
+%define release %mkrel 1
+%define tarname %{name}-%{version}
+%endif
 
 ##### GENERAL DEFINITIONS
 
@@ -33,7 +39,7 @@ BuildRequires:	cups >= 1.2.0
 ##### SOURCES
 
 # Foomatic packages
-Source:	http://www.linuxprinting.org/download/foomatic/%{name}-%{version}-%{releasedate}.tar.gz
+Source0:	http://www.linuxprinting.org/download/foomatic/%{tarname}.tar.gz
 
 ##### BUILD ROOT
 
@@ -63,7 +69,7 @@ Foomatic PPD files.
 ##### FOOMATIC
 
 # Source trees for installation
-%setup -q -n %{name}-%{version}-%{releasedate}
+%setup -q -n %{tarname}
 %if 0
 # Modifications to make package building on 64-bit-systems
 perl -p -i -e 's:\blib\b:\$LIB:g' configure.ac
