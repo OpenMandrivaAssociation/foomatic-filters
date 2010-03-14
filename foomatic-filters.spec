@@ -2,10 +2,10 @@
 %define version 4.0.3
 %define releasedate 0
 %if %{releasedate}
-%define release %mkrel 0.%{releasedate}.2
+%define release %mkrel 0.%{releasedate}.3
 %define tarname %{name}-%{version}-%{releasedate}
 %else
-%define release %mkrel 1
+%define release %mkrel 2
 %define tarname %{name}-%{version}
 %endif
 
