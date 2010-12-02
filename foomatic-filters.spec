@@ -1,11 +1,11 @@
 %define name foomatic-filters
 %define version 4.0.3
-%define releasedate 0
+%define releasedate 1
 %if %{releasedate}
-%define release %mkrel 0.%{releasedate}.3
+%define release %mkrel 0.%{releasedate}.4
 %define tarname %{name}-%{version}-%{releasedate}
 %else
-%define release %mkrel 2
+%define release %mkrel 3
 %define tarname %{name}-%{version}
 %endif
 
