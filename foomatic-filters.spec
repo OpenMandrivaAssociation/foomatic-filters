@@ -1,5 +1,5 @@
 %define name foomatic-filters
-%define version 4.0.7
+%define version 4.0.9
 %define releasedate 0
 %if %{releasedate}
 %define release %mkrel 0.%{releasedate}.1
@@ -30,6 +30,7 @@ Provides:	foomatic
 BuildRequires:	autoconf
 BuildRequires:	perl-devel file libxml2-devel mpage
 BuildRequires:	libgs-devel
+BuildRequires:	dbus-devel
 %ifarch x86_64
 BuildRequires:	cups >= 1.2.0-0.5361.0mdk
 %else
