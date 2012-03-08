@@ -1,5 +1,5 @@
 %define name foomatic-filters
-%define version 4.0.9
+%define version 4.0.12
 %define releasedate 0
 %if %{releasedate}
 %define release %mkrel 0.%{releasedate}.1
@@ -111,7 +111,7 @@ esac!' configure.ac
 
 # Makefile generation ("./make_configure" for CVS snapshots)
 ./make_configure
-%configure
+%configure2_5x
 # Do not use "make" macro, as parallelized build of Foomatic does not
 # work.
 make
