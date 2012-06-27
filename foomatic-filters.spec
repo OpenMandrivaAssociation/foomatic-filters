@@ -1,5 +1,5 @@
 %define name foomatic-filters
-%define version 4.0.15
+%define version 4.0.16
 %define releasedate 0
 %if %{releasedate}
 %define release %mkrel 0.%{releasedate}.1
@@ -40,7 +40,7 @@ BuildRequires:	cups >= 1.2.0
 ##### SOURCES
 
 # Foomatic packages
-Source0:	http://www.linuxprinting.org/download/foomatic/%{tarname}.tar.gz
+Source0:	http://www.openprinting.org/download/foomatic/%{name}-%{version}.tar.gz
 
 ##### BUILD ROOT
 
