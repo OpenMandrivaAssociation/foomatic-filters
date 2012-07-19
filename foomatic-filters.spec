@@ -1,5 +1,5 @@
 %define name foomatic-filters
-%define version 4.0.16
+%define version 4.0.17
 %define releasedate 0
 %if %{releasedate}
 %define release %mkrel 0.%{releasedate}.1
