@@ -2,10 +2,10 @@
 %define version 4.0.17
 %define releasedate 0
 %if %{releasedate}
-%define release %mkrel 0.%{releasedate}.1
+%define release 0.%{releasedate}.1
 %define tarname %{name}-%{version}-%{releasedate}
 %else
-%define release %mkrel 1
+%define release 2
 %define tarname %{name}-%{version}
 %endif
 
@@ -134,7 +134,7 @@ make	PREFIX=%{_prefix} \
 rm -f %buildroot/etc/foomatic/filter.conf.sample
 
 # Link to make Foomatic 2.0.x CUPS queues working with Foomatic 3.0.x
-ln -s ../../../bin/foomatic-rip %buildroot%{_prefix}/lib/cups/filter/cupsomatic
+ln -s ../../../bin/foomatic-rip %buildroot%{_libdir}/cups/filter/cupsomatic
 
 ##### GENERAL STUFF
 
