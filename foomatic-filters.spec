@@ -161,8 +161,8 @@ rm -rf %{buildroot}
 %defattr(-,root,root)
 %doc README USAGE TODO ChangeLog
 %_bindir/*
-%_prefix/lib/cups/filter/*
-%_prefix/lib/cups/backend/*
+%_libdir/cups/filter/*
+%_libdir/cups/backend/*
 %_prefix/lib/ppr/interfaces/*
 %_prefix/lib/ppr/lib/*
 %{_mandir}/man1/*
