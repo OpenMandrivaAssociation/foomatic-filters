@@ -1,7 +1,7 @@
 Summary:	Foomatic filters needed to run print queues with Foomatic PPDs
 Name:		foomatic-filters
 Version:	4.0.17
-Release:	8
+Release:	9
 License:	GPLv2
 Group:		System/Servers
 Url:		http://www.openprinting.org
@@ -63,13 +63,13 @@ rm -f	%{buildroot}%{_bindir}/foomatic-rip \
 # Restart the CUPS daemon when it is running, but do not start it when it
 # is not running. The restart of the CUPS daemon updates the CUPS-internal
 # backend index
-/sbin/service cups condrestart > /dev/null 2>/dev/null || :
+%systemd_postun_with_restart cups
 
 %postun
 # Restart the CUPS daemon when it is running, but do not start it when it
 # is not running. The restart of the CUPS daemon updates the CUPS-internal
 # backend index
-/sbin/service cups condrestart > /dev/null 2>/dev/null || :
+%systemd_postun
 
 %files
 %doc README USAGE TODO ChangeLog
