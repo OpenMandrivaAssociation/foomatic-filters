@@ -1,11 +1,12 @@
 Summary:	Foomatic filters needed to run print queues with Foomatic PPDs
 Name:		foomatic-filters
 Version:	4.0.17
-Release:	4
+Release:	9
 License:	GPLv2
 Group:		System/Servers
 Url:		http://www.openprinting.org
 Source0:	http://www.openprinting.org/download/foomatic/%{name}-%{version}.tar.gz
+BuildArch: noarch
 
 BuildRequires:	cups
 BuildRequires:	file
@@ -38,44 +39,41 @@ Foomatic PPD files.
 
 %build
 %configure2_5x
-make
+%make
 
 %install
 install -d %{buildroot}%{_bindir}
 install -d %{buildroot}%{_sysconfdir}
 install -d %{buildroot}%{_mandir}/man1
 
-make \
+%make \
 	PREFIX=%{_prefix} \
 	DESTDIR=%{buildroot} \
-	install
+	install-main install-cups
 
 # Remove superfluous file
 rm -f %{buildroot}/etc/foomatic/filter.conf.sample
 
-# Link to make Foomatic 2.0.x CUPS queues working with Foomatic 3.0.x
-ln -s ../../../bin/foomatic-rip %{buildroot}%{_prefix}/lib/cups/filter/cupsomatic
+# We get foomatic-rip from cups-filters these days
+rm -f	%{buildroot}%{_bindir}/foomatic-rip \
+	%{buildroot}%{_prefix}/lib/cups/filter/foomatic-rip \
+	%{buildroot}%{_mandir}/man1/foomatic-rip.1*
 
 %post
 # Restart the CUPS daemon when it is running, but do not start it when it
 # is not running. The restart of the CUPS daemon updates the CUPS-internal
 # backend index
-/sbin/service cups condrestart > /dev/null 2>/dev/null || :
+%systemd_postun_with_restart cups
 
 %postun
 # Restart the CUPS daemon when it is running, but do not start it when it
 # is not running. The restart of the CUPS daemon updates the CUPS-internal
 # backend index
-/sbin/service cups condrestart > /dev/null 2>/dev/null || :
+%systemd_postun
 
 %files
 %doc README USAGE TODO ChangeLog
-%{_bindir}/*
-%{_prefix}/lib/cups/filter/*
 %{_prefix}/lib/cups/backend/*
-%{_prefix}/lib/ppr/interfaces/*
-%{_prefix}/lib/ppr/lib/*
-%{_mandir}/man1/*
 %dir %config(noreplace) %{_sysconfdir}/foomatic
 %dir %config(noreplace) %{_sysconfdir}/foomatic/direct
 %config(noreplace) %{_sysconfdir}/foomatic/filter.conf
