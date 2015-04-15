@@ -1,12 +1,12 @@
 Summary:	Foomatic filters needed to run print queues with Foomatic PPDs
 Name:		foomatic-filters
 Version:	4.0.17
-Release:	12
+Release:	13
 License:	GPLv2
 Group:		System/Servers
 Url:		http://www.openprinting.org
 Source0:	http://www.openprinting.org/download/foomatic/%{name}-%{version}.tar.gz
-BuildArch: noarch
+BuildArch:	noarch
 
 BuildRequires:	cups
 BuildRequires:	file
@@ -38,7 +38,7 @@ Foomatic PPD files.
 %setup -q
 
 %build
-%configure2_5x
+%configure
 %make
 
 %install
