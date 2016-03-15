@@ -74,7 +74,6 @@ rm -f	%{buildroot}%{_bindir}/foomatic-rip \
 
 %files
 %doc README USAGE TODO ChangeLog
-%{_prefix}/lib/cups/backend/*
 %dir %config(noreplace) %{_sysconfdir}/foomatic
 %dir %config(noreplace) %{_sysconfdir}/foomatic/direct
 %config(noreplace) %{_sysconfdir}/foomatic/filter.conf
