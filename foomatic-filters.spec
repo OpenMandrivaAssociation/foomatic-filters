@@ -56,8 +56,8 @@ rm -f %{buildroot}/etc/foomatic/filter.conf.sample
 
 # We get foomatic-rip from cups-filters these days
 rm -f	%{buildroot}%{_bindir}/foomatic-rip \
-	%{buildroot}%{_prefix}/lib/cups/filter/foomatic-rip \
-	%{buildroot}%{_prefix}/lib/cups/backend/beh \
+	%{buildroot}%{_prefix}/%{_libdir}/cups/filter/foomatic-rip \
+	%{buildroot}%{_prefix}/%{_libdir}/cups/backend/beh \
 	%{buildroot}%{_mandir}/man1/foomatic-rip.1*
 
 %post
