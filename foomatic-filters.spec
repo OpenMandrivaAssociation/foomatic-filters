@@ -35,11 +35,11 @@ This package contains the filters needed to run print queues based on
 Foomatic PPD files.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %configure
-%make
+%make_build
 
 %install
 install -d %{buildroot}%{_bindir}
@@ -56,8 +56,8 @@ rm -f %{buildroot}/etc/foomatic/filter.conf.sample
 
 # We get foomatic-rip from cups-filters these days
 rm -f	%{buildroot}%{_bindir}/foomatic-rip \
-	%{buildroot}%{_libdir}/cups/filter/foomatic-rip \
-	%{buildroot}%{_libdir}/cups/backend/beh \
+	%{buildroot}%{_prefix}/*/cups/filter/foomatic-rip \
+	%{buildroot}%{_prefix}/*/cups/backend/beh \
 	%{buildroot}%{_mandir}/man1/foomatic-rip.1*
 
 %post
