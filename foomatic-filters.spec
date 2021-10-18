@@ -1,3 +1,5 @@
+%global optflags %{optflags} -fcommon
+
 Summary:	Foomatic filters needed to run print queues with Foomatic PPDs
 Name:		foomatic-filters
 Version:	4.0.17
