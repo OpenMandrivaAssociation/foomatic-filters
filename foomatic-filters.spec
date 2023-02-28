@@ -3,7 +3,7 @@
 Summary:	Foomatic filters needed to run print queues with Foomatic PPDs
 Name:		foomatic-filters
 Version:	4.0.17
-Release:	20
+Release:	21
 License:	GPLv2
 Group:		System/Servers
 Url:		http://www.openprinting.org
@@ -19,6 +19,7 @@ BuildRequires:	pkgconfig(dbus-1)
 BuildRequires:	pkgconfig(libxml-2.0)
 Requires:	mpage
 Provides:	foomatic
+%systemd_requires
 
 %description
 Foomatic is a comprehensive, spooler-independent database of printers,
