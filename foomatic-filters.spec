@@ -13,7 +13,7 @@ BuildArch:	noarch
 BuildRequires:	cups
 BuildRequires:	file
 BuildRequires:	mpage
-BuildRequires:	libgs-devel
+BuildRequires:	ghostscript-devel
 BuildRequires:	perl-devel
 BuildRequires:	pkgconfig(dbus-1)
 BuildRequires:	pkgconfig(libxml-2.0)
