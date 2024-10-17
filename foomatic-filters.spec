@@ -6,7 +6,7 @@ Version:	4.0.17
 Release:	23
 License:	GPLv2
 Group:		System/Servers
-Url:		http://www.openprinting.org
+Url:		https://www.openprinting.org
 Source0:	http://www.openprinting.org/download/foomatic/%{name}-%{version}.tar.gz
 BuildArch:	noarch
 
